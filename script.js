@@ -1,15 +1,16 @@
+//set the possible plays
+let plays = ["Rock", "Paper", "Scissors"];
+// have the computer choose a play
 function computerPlay(){
-    let plays = ["Rock", "Paper", "Scissors"];
     return plays[Math.floor(Math.random() * plays.length)];
 }
-
+//plays a round
 function playRound(playerSelection, computerSelection){
     let playerSelected = playerSelection.toLowerCase();
     let computerSelected = computerSelection.toLowerCase();
 
     if(playerSelected == computerSelected){
         console.log("You both chose "+playerSelected+"! It's a tie!");
-        return;
     }
     else if (playerSelected === "rock"){
         if (computerSelected === "paper"){
@@ -35,9 +36,17 @@ function playRound(playerSelection, computerSelection){
             console.log("You lose! Rock beats scissors!");
         }
     }
+    else{
+        console.log("Something went wrong!");
+    }
+}
+//plays a game
+function game(){
+    for (let i = 0; i<5; i++){
+        const playerSelection = prompt("Rock, Paper, or Scissors?");
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
 }
 
-const playerSelection = "RoCk";
-const computerSelection = computerPlay();
-
-console.log(playRound(playerSelection, computerSelection));
+game();
